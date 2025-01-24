@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q POS|สินค้า</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/front-end/css/menu.css">
+    <!--  
+    <link rel="stylesheet" href="dist/css/search-list.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/front-end/dist/css/bootstrap-select.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/front-end/dist/js/bootstrap-select.js"></script>
+    -->
+    <script src="/front-end/js/jsalert.min.js"></script>
+
+   <Style>
+
+    @font-face {
+        font-family:'kanit';
+        src: url('fonts/kanit/Kanit-Regular.ttf');
+    }       
+    body{
+        font-family: 'kanit';
+    }
+
+    .showDate{
+        font-size: 13px;
+        color: #5abdce;
+        font-weight: bold;
+        text-align: left;
+        padding: 17px;
+    }
+    .child {
+        height: auto;
+        margin: 10px;
+        border: 0px solid;
+        background-color: #f8f8f2; 
+        
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+/* ========= table  */
+    table {
+        border-collapse: collapse;
+      }
+      
+      th{
+        text-align: center;
+
+      }
+      tr:nth-child(even) {
+        background-color: #e4f5f5;
+      }
+      
+      th {
+        background-color: #4f504f;
+        color: rgb(228, 86, 86);
+        font-size: 20px;
+        width: 100px;
+      }
+
+    /* =================== M
+    odal Content */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 2% ;
+
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+  .close:hover,
+  .close:focus {
+    color: red; 
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+  /* ======================Modal */
+
+  *{
+    box-sizing: border-box;
+  }
+
+    input[type=text], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-size: medium;
+      
+    }
+
+    label {
+      padding: 12px 12px 12px 0;
+      display: inline-block;
+    }
+    .btn_save{
+      background-color: #04754c;
+      color: white;
+      border-radius: 20px;
+      padding: 14px 20px;
+      font-size:19px;
+      font-weight: bold;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+
+    }
+
+    .btn_save:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .col-25 {
+      float: left;
+      width: 25%;
+      margin-top: 6px;
+    }
+
+    .col-75 {
+      float: left;
+      width: 75%;
+      margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+
+  .myInput {
+    background-position: left ;
+    background-size: 18px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .btn_search {
+    float: right;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 2px solid rgb(206, 80, 42);
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    border-radius: 50% ;
+  }
+  .btn_search:hover {
+    background: #092cc9;
+  }
+  .title{
+    font-size: 19px;
+    color: #092cc9;
+    font-weight: bold;
+  }
+  .inp_qty{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: medium;
+  }
+
+  .tb {width:100%;}
+  .th1{
+    width:50%; 
+    text-align: left;
+    background-color: #f8f8f2; 
+  }
+  .th2 {text-align:right; background-color: #f8f8f2;}
+  .th3 {text-align:left; background-color: #f8f8f2;}  
+  .th4 {text-align:left; background-color: #f8f8f2;}
+
+  .message{
+            background-color:lightslategray;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+
+        }
+        .message.success{
+            background-color: rgb(101, 165, 101);
+            display: block;
+        }
+
+        .message.danger{
+            background-color:  rgb(245, 240, 240);
+            color: rgba(255, 0, 0, 0.911);
+            border-style: groove;
+            display: block;
+            font-weight: bold;
+            border-radius: 10px;
+            border-width: 2px;
+            border-color: rgb(238, 61, 48);
+        }
+        .message.clear{
+            display: none;
+        }
+   .div-edit{
+    color: #dfc532;
+    font-weight: bold;
+   }
+
+   #button-edit{
+          background-image: linear-gradient(#42A1EC, #127dd4);
+          border: 1px solid #0077CC;
+          border-radius: 8px;
+          box-sizing: border-box;
+          color: #FFFFFF;
+          cursor: pointer;
+          direction: ltr;
+          display: block;
+          font-family:  Tahoma;
+          font-size: 16px;
+          font-weight: 40;
+          letter-spacing: -.022em;
+          line-height: 1.47059;
+          
+          overflow: visible;
+          text-align: center;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          white-space: nowrap;
+      }
+
+        #button-edit:hover {
+            background-image: linear-gradient(#221fc5, #192abb);
+            border-color: #1482D0;
+            text-decoration: none;
+        }
+
+        #button-edit:active {
+            background-image: linear-gradient(#3D94D9, #0067B9);
+            border-color: #006DBC;
+            outline: none;
+        }
+        #button-edit:focus {
+            box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+            outline: none;
+        }
+
+        #button-delete{
+            background-image: linear-gradient(#ee8a7d, #dd6945);
+            border: 1px solid #cc6d00;
+            border-radius: 8px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: ltr;
+            display: block;
+            font-family:  Tahoma;
+            font-size: 16px;
+            font-weight: 40;
+            letter-spacing: -.022em;
+            line-height: 1.47059;
+            
+            overflow: visible;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+        }
+
+        #button-delete:hover {
+            background-image: linear-gradient(red, red);
+            border-color: #d01498;
+            text-decoration: none;
+        }
+
+        #button-delete:active {
+            background-image: linear-gradient(#ce5a77, #d15977);
+            border-color: #bc2c00;
+            outline: none;
+        }
+        #button-delete:focus {
+            box-shadow: hsla(0, 78%, 57%, 0.932) 0 0 0 3px;
+            outline: none;
+        }
+
+      .new_item{
+          background-color: #04754c;
+          color: #e0d0d0;
+          font-weight: bold;
+          height: 30px;
+          border-radius: 8px;
+
+       }
+
+      .new_order{
+        background-color: #dfc532;
+        font-weight: bold;
+        height: 30px;
+        border-radius: 8px;
+      }
+
+</Style>
+
+</head>
+<body >
+    
+    <div class="child">
+       
+      <div class="topnav" id="myTopnav">
+          <a href="#home" class="active"> <img src="/front-end/images/Lotus1.png" alt="ิกลับไปหน้า หลัก"  style="width:45x;height:35px; border-radius: 5px;" > </a>
+          <a href="/front-end/sell.html">ขาย</a>
+          <a href="/front-end/product.html">สินค้า</a>
+          <a href="/front-end/report.html">รายงาน</a>
+          <a href="#User">ข้อมูลผู้ใช้</a>
+          <a href="/front-end/upload.html">นำเข้าข้อมูล</a>
+          <a href="#Exit" alt="ิกลับไปหน้า Login" > <img src="/front-end/images/exit_2.jpg" alt="ิกลับไปหน้า Login" style="width:40px;height:30px; border-radius: 2px;" ></a>
+          <div id="id_date" class="showDate" > 12/12/2054 | Id: 5682   </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+      </div>
+       
+        <br>
+        
+          <div style="overflow-x:auto;"> 
+            
+            <table class="tb" >
+              <tr>
+                <th class="th1"><button id="myBtn" class="new_item">สินค้า +</button> </th>
+                <th class="th2"><button type="submit" class="btn_search" title="กดค้นหาสินค้า" onclick="searchName()" > <i class="fa fa-search"></i></button> </th>
+                <th class="th3"><input id="search" placeholder="ค้นหาสินค้า ..." type="text" class="myInput" onchange="searchName()" >  </th>
+                <th class="th4"> <div id="divsearch" style="font-size: 12px;"> </div> </th>
+              </tr>
+            </table>
+          </div>
+          
+          <br>
+        <div id="totalProduct"> </div>
+          <div id="product" style="overflow-x:auto;"> </div>
+        
+          <div id="errMsg" > </div>
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close" title="--> ปิด">&times;</span>
+             
+              <p class="title" id="title">เพิ่มสินค้า </p>  
+              
+
+              <div class="row" > 
+                <div class="col-25">
+                  <button id="btnAdd" class="new_order" onclick="cleardataProduct()"> เคลียร์หน้าจอ</button> 
+                </div>
+               <div class="col-75">
+                <div id="divEdit" class="div-edit"></div>
+                </div>
+             </div>
+             
+              
+              <div class="row" > 
+                 <div class="col-25">
+                  <label for="fname">ชื่อสินค้า</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="productName" name="productName" placeholder="ชื่อสินค้า..">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">คีย์ลัดค้นหา</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="shortcut" name="shortcut" placeholder="คีย์ลัดค้นหา..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">ราคาต่อหน่วย</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="qty" name="qty" class="inp_qty" onchange='setAmount(this)' value="0.00"  >  
+                  <div id="infor"></div>
+                </div>
+              </div>
+              
+              <br>
+              <div id="message" class="message "> </div>
+
+              <div class="row">
+                <input type="submit" id="savebtn" class="btn_save"  value="บันทึกข้อมูล" onclick="onclicksubmit()">
+              </div>
+            
+            </div>
+          </div>
+
+    
+    </div>    
+
+    <script>
+
+    let btn = document.getElementById("myBtn");
+    btn.onclick = function() {
+      mode = 'CREATE'
+      selectedId = ''
+      console.log(mode)
+      if(mode=='CREATE'){
+        document.getElementById('title').innerText = 'เพิ่มสินค้า'
+        document.getElementById('btnAdd').style.display = 'block'
+        document.getElementById('divEdit').innerHTML =''
+      }
+      cleardata()
+      displayMoal()
+    }
+      
+    // function myFunction() {
+    //     var x = document.getElementById("myTopnav");
+    //     if (x.className === "topnav") {
+    //     x.className += " responsive";
+    //     } else {
+    //     x.className = "topnav";
+    //     }
+    // }
+
+
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+    
+    function displayMoal(){
+      let modal = document.getElementById("myModal");
+      let span = document.getElementsByClassName("close")[0];
+      modal.style.display = "block";
+      
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+    }
+    
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- เพิ่ม script axios -->   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/front-end/js/system.js"></script>
+    <script src="/front-end/js/product.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Q POS|ขาย</title>
+<meta charset=”utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="/front-end/dist/css/bootstrap-select.css">
+<!--  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/front-end/css/menu.css">
+
+<!--  
+<link rel="stylesheet" href="dist/css/search-list.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/front-end/dist/js/bootstrap-select.js"></script>
+<script src="/front-end/js/jsalert.min.js"></script>
+
+<style>
+    @font-face {
+        font-family:'kanit';
+        src: url('fonts/kanit/Kanit-Regular.ttf');
+    }       
+    body{
+        font-family: 'kanit';
+    }
+
+ 
+table {
+        border-collapse: collapse;
+      }
+      
+      th{
+        text-align: center;
+
+      }
+      tr:nth-child(even) {
+        background-color: #e4f5f5;
+      }
+      
+      th {
+        background-color: #4f504f;
+        color: rgb(228, 86, 86);
+        font-size: 20px;
+        width: 100px;
+      }
+      
+      .td_1 {
+          font-size: 15px;
+          height: 40px;
+          text-align: left;
+          width: 40%;
+      }
+      .td_2 {
+          font-size: 17px;
+          height: 40px;
+          text-align: center;
+          width: 20%;
+      }
+      .td_3 {
+          font-size: 17px;
+          height: 40px;
+          text-align: right;
+      }
+      .td_4 {
+          height: 40px;
+          width: 3%;
+
+      }
+
+      .ftd_1{
+          height: 40px;
+          width:  40%;;
+          font-size:15px;
+          font-weight: bold;
+          text-align: left;
+          background-color: #f8f8f2; 
+ 
+      }
+      .ftd_2{
+          height: 40px;
+          width: 20%;
+          text-align: left;
+          font-size:16px;
+          font-weight: bold;
+          background-color: #f8f8f2; 
+      }
+
+      .ftd_amt_discnt{
+          height: 40px;
+          width: 100px;
+          font-size:17px;
+          font-weight: bold;
+          text-align: right;
+          color: rgb(230, 85, 85);
+          background-color: #f8f8f2; 
+          
+      }
+
+      .ftd_discnt{
+          height: 40px;
+          width: 80px;
+          text-align: left;
+          font-size:13px;
+          font-weight: bold;
+          color:rgb(230, 85, 85);
+          background-color: #f8f8f2; 
+      }
+        
+      .ftd_sum{
+          height: 40px;
+          width: 100px;
+          font-size:18px;
+          font-weight: bold;
+          text-align: right;
+          color: rgb(37, 36, 36);
+      }
+      .ftd_sumall{
+          height: 40px;
+          width: 100px;
+          font-size:22px;
+          font-weight: bold;
+          text-align: right;
+          color: rgb(12, 175, 75);
+      }
+
+      .decimal{
+          height:30px;
+          width:47px;
+          text-align: center;
+          font-size:17px;
+          font-weight: bold;
+          color: blue;
+
+      }
+      .button-edit{
+          background-image: linear-gradient(#42A1EC, #127dd4);
+          border: 1px solid #0077CC;
+          border-radius: 8px;
+          box-sizing: border-box;
+          color: #FFFFFF;
+          cursor: pointer;
+          direction: ltr;
+          display: block;
+          font-family:  Tahoma;
+          font-size: 16px;
+          font-weight: 40;
+          letter-spacing: -.022em;
+          line-height: 1.47059;
+          
+          overflow: visible;
+          text-align: center;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          white-space: nowrap;
+      }
+
+        .button-edit:hover {
+            background-image: linear-gradient(#221fc5, #192abb);
+            border-color: #1482D0;
+            text-decoration: none;
+        }
+
+        .button-edit:active {
+            background-image: linear-gradient(#3D94D9, #0067B9);
+            border-color: #006DBC;
+            outline: none;
+        }
+        .button-edit:focus {
+            box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+            outline: none;
+        }
+
+        .button-delete{
+            background-image: linear-gradient(#ee8a7d, #dd6945);
+            border: 1px solid #cc6d00;
+            border-radius: 8px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: ltr;
+            display: block;
+            font-family:  Tahoma;
+            font-size: 16px;
+            font-weight: 40;
+            letter-spacing: -.022em;
+            line-height: 1.47059;
+            
+            overflow: visible;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+        }
+
+        .button-delete:hover {
+            background-image: linear-gradient(red, red);
+            border-color: #d01498;
+            text-decoration: none;
+        }
+
+        .button-delete:active {
+            background-image: linear-gradient(#ce5a77, #d15977);
+            border-color: #bc2c00;
+            outline: none;
+        }
+        .button-delete:focus {
+            box-shadow: hsla(0, 78%, 57%, 0.932) 0 0 0 3px;
+            outline: none;
+        }
+        /*
+        .child {
+            height: 1000px;
+            margin: 10px;
+            border: 0px solid;
+            background-color: #f8f8f2; 
+
+        }
+        */ 
+        .child {
+          height: auto;
+          margin: 10px;
+          border: 0px solid;
+          background-color: #f8f8f2; 
+        
+        }
+
+        
+
+        /*             background-color: #ececea;  */
+   
+        .lineBorder {
+            border-top: 2px solid red; 
+        }
+
+        .discnt_botton{
+            height:25px;
+            width:47px;
+            text-align: center;
+            font-size:15px;
+            font-family:sans-serif;
+        }
+
+        .btn_qty{
+
+          height:30px;
+          width:47px;
+          text-align: center;
+          font-size:16px;
+          font-weight: bold;
+          color: blue;
+
+        }
+        .button_Chekbill{
+            background-image: linear-gradient(#7f7dee, #5c45dd);
+            border: 1px solid #cc6d00;
+            border-radius: 8px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: ltr;
+            display: block;
+            
+            height:40px;
+            width:90px;
+            text-align: center;
+            font-size:15px;
+            font-family:Tahoma;
+            font-weight: bold;
+            letter-spacing: -.022em;
+            line-height: 1.47059;
+            overflow: visible;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+
+        }
+        .button_Chekbill:hover {
+
+            background-image: linear-gradient(rgb(199, 149, 201), rgb(255, 0, 98));
+            border-color: #d01498;
+            text-decoration: none;
+
+        }
+        .button_Chekbill:active {
+            background-image: linear-gradient(#5a5cce, #5961d1);
+            border-color: #0096bc;
+            outline: none;
+
+        }
+        .button_Chekbill:focus {
+            box-shadow: hsla(300, 1%, 59%, 0.932) 0 0 0 3px;
+            outline: none;
+
+        }
+        .txtGetMoney{
+
+          height: 35px;
+          width: 120px;
+          font-size:21px;
+          font-weight: bold;
+          text-align: right;
+          background-color: #383a3a;
+          color: rgb(12, 175, 75);
+
+        }
+
+/* Set a style for all buttons */
+.button_ok {
+  background-color: #04754c;
+  color: white;
+  border-radius: 20px;
+  padding: 14px 20px;
+  font-size:19px;
+  font-weight: bold;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button_ok:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/*
+.container {
+  padding: 16px;
+}
+*/
+
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+    /* =================== M
+    odal Content */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 10px; /* Location of the box */
+      left: 0px;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin : auto;
+      padding: 40px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 2% ;
+
+    }
+
+   /* The Close Button */
+   .close {
+      color: #3a3939;
+      float: right;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+  .close:hover,
+  .close:focus {
+    color: red; 
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+/* Add Zoom Animation */
+/*
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+*/
+/* Change styles for span and cancel button on extra small screens */
+/*
+@media screen and (max-width: 600px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+ 
+}
+
+*/
+
+
+.showDate{
+  font-size: 13px;
+  color: #5abdce;
+  font-weight: bold;
+  text-align: left;
+  padding: 17px;
+  
+}
+
+.div_select_product {
+  margin-top: 0px;
+  margin-bottom: 50x;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+.div_select_product_detail {
+  margin-top: 10px;
+  margin-bottom: 50x;
+  margin-right: 50px;
+  margin-left: 0px;
+}
+
+/* Responsesive Form*/
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/*  div ต่อกัน */
+ .span_inv{
+  float: center;
+  margin: 10px;
+  font-size: medium;
+  font-weight: bold;
+  color: #333333;
+ }
+  .span_inv_no{
+  float: center;
+  margin: 10px;
+  font-weight: bold;
+  color: #333333;
+
+
+ }
+ .span_infoprod{
+  float: center;
+  margin: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333333;
+
+ }
+
+ .span_inv_detail{
+  float: center;
+  margin: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #04754c;
+ }
+
+ .title{
+    font-size: 20px;
+    color: #092cc9;
+    font-weight: bold;
+  }
+
+/* Create a custom radio button */
+/* The container   Radio Check   */
+ .container_rdio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container_rdio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #d4d2d2;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container_rdio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container_rdio input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container_rdio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container_rdio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+ 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.message{
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+
+        }
+        .message.success{
+            color: rgb(10, 80, 230);
+            font-size: medium;
+            font-weight: bold;
+            display: block;
+        }
+
+        .message.danger{
+            color:  rgb(228, 86, 86);
+            font-size: medium;
+            font-weight: bold;
+            display: block;
+        }
+        .message.clear{
+            display: none;
+        }
+
+
+  .blink {
+    animation: blinkIt 1s infinite;
+  }
+
+  @keyframes blinkIt {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }      
+
+  .new_order{
+    background-color: #dfc532;
+    font-weight: bold;
+    height: 30px;
+    border-radius: 8px;
+   }
+   .new_item{
+    background-color: #04754c;
+    color: #e0d0d0;
+    font-weight: bold;
+    height: 30px;
+    border-radius: 8px;
+    
+
+   }
+
+
+</style>
+
+</head>
+
+<!-- 
+<body onload="formLoad()">
+-->  
+<body>
+
+<div class="child">
+
+  <div class="topnav" id="myTopnav">
+    <a href="#home" class="active"> <img src="/front-end/images/Lotus1.png" alt="ิกลับไปหน้า หลัก"  style="width:45x;height:35px; border-radius: 5px;" > </a>
+    <a href="/front-end/sell.html">ขาย</a>
+    <a href="/front-end/product.html">สินค้า</a>
+    <a href="/front-end/report.html">รายงาน</a>
+    <a href="#User">ข้อมูลผู้ใช้</a>
+    <a href="/front-end/upload.html">นำเข้าข้อมูล</a>
+    <a href="#Exit" alt="ิกลับไปหน้า Login" > <img src="/front-end/images/exit_2.jpg" alt="ิกลับไปหน้า Login" style="width:40px;height:30px; border-radius: 2px;" ></a>
+    <div id="id_date" class="showDate" > 12/12/2054 | Id: 5682   </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+
+    <br>
+      <div class="div_select_product"> 
+          
+          <div class="row" > 
+            <div class="col-50">
+              <!-- class กำหนดความสูง  .bootstrap-select > .dropdown-toggle  mySelect prod_Select  
+              &nbsp;&nbsp; 
+              -->
+              <span>
+                <select id="prod_Select" class="selectpicker" data-live-search="true">
+                  <option>-- ค้นหาสินค้า -- </option>
+                </select>    
+                <span> &nbsp;&nbsp; <input type="button"  class="new_order"    value="ขาย +"  onclick="clearDataTonewInv()" title="ล้างหน้าจอ เริ่มคำสั่งซื้อใหม่"> </span>
+             </span>
+            </div>
+          </div>
+          
+      </div>
+      
+      <br>    
+  
+  <div class="div_select_product_detail">
+     
+    <span><input type="button" id="btnInsert" class="new_item" onclick="doTheInsert()"  value=" เพิ่มรายการ +" title="เพิ่มสินค้า"> </span>
+
+    <span id="labelunit" class="span_infoprod"> ราคา/หน่วย </span>  
+    <span id="unitPrice" class="span_inv_detail"> 0 </span>  
+    <span id="qty" class="span_infoprod"> จำนวน <input id="qtybtn" name="qtybtn" type="number" class="btn_qty" min="1" value="1" onchange="changeQty()"></span>  
+    <span id="amount" class="span_inv_detail"></span>  
+
+  </div>
+    <br> 
+    <div>
+      <table id="myTable"  style="border:0"  >
+        <thead>
+            <tr>
+                <th >สินค้า</th>
+                <th >จำนวน</th>
+                <th >ราคา</th>
+                </tr>
+          </thead>
+          <tbody>
+        </tbody>
+
+      </table>
+    </div>  
+    <br>
+    
+  <div>
+    <table id="f_sum" class="lineBorder">
+        <tbody>
+            <tr>
+                <td class="ftd_1"> <div id="item"> 0 รายการ</div></td>
+                <td class="ftd_2">รวม</td>
+                <td class="ftd_sum"> <div id="sum_amt_obj">0</div> </td>
+             </tr>
+             <tr>
+                 <td class="ftd_1"> </td>
+                 <td class="ftd_discnt">ส่วนลด <input type='number' id ='b_discnt' class="discnt_botton" min='0' max='99' value='0' onchange='changeDiscount(this)'>%</td>
+                 <td class="ftd_amt_discnt"> <div id="discount">0</div></td>
+              </tr>
+              <tr>
+                <td class="ftd_1"> </td>
+                 <td class="ftd_2">รวมทั้งหมด</td>
+                 <td class="ftd_sumall"> <div id="sum_amt_all">0</div> </td>
+              </tr>
+
+        </tbody>
+        
+   </table>
+  </div>
+  <div id="wait-text" style="font-weight: bold;color: red;">  </div>
+      
+   <table id="check_sum" >
+        <tbody>
+              <tr> 
+                <td class="ftd_1"> </td>
+                <td class="ftd_2"><button id="chkbill" class="button_Chekbill" onclick="loadFrmSaveData()" disabled=true > คิดเงิน</button>  </td>
+                <td> </td>
+            </tr>
+        </tbody>
+      </table>
+
+    <div id="errMsg" > </div>
+           <!-- T
+  <div id="id01" class="modal"  >
+    <div class="modal-content animate" >
+      <div class="imgcontainer">
+        <span  onclick="document.getElementById('id01').style.display='none' ;closeClearForm() " class="close" title="===>ปิด">&times;</span>
+      </div>
+    -->
+      
+           <!-- The Modal -->
+  <div id="id01" class="modal">
+            <!-- Modal content -->
+      <div class="modal-content">
+            <div class="imgcontainer">
+              <span  onclick="document.getElementById('id01').style.display='none';closeClearForm()" data-dismiss="modal" class="close" title="->ปิด">&times;</span>
+            </div>
+ 
+              <p class="title" id="title">ชำระเงิน &nbsp;&nbsp;&nbsp;&nbsp; <span id="sumtotal"  style="color:#04754c;font-size: 25px;font-weight: bold;">  </span>
+
+                <table>
+                  <tr>
+                      <td>
+                          <label class="container_rdio">
+                              <input type="radio" id="typecheck1"  name="typecheck" value="cash"  onchange="changeType(this)" checked> เงินสด  &nbsp;
+                              <span class="checkmark"></span>
+                          </label>
+  
+                      </td>
+                      <td>
+                          <label class="container_rdio">
+                              <input type="radio" id="typecheck2" name="typecheck" value="tranfer" onchange="changeType(this)"> สแกน QR  
+                              <span class="checkmark"></span>
+                          </label>    
+                      </td>
+                  </tr>
+                </table>
+              </p>
+              
+              <div id="div_cash" style="display:inline;"> 
+
+                <div class="row" > 
+                  <div class="col-25">
+                    <p  id="title" style="color:#0c0c0cb4;font-size: 18px;font-weight: bold;"><b >รับเงิน</b> </p> 
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="getMoney" class="txtGetMoney" onchange='formatNumber(this)' value=""  > 
+                  </div>
+                </div>
+
+                <div class="row" > 
+                  <div class="col-25">
+                    <p  id="title" style="color:#0c0c0cb4;font-size: 18px;font-weight: bold;"><b >ทอนเงิน</b> </p> 
+                  </div>
+                  <div class="col-75">
+                    <div id="change" style="width: 120px; font-weight: bold;"> </div> 
+                  </div>
+                </div>
+
+          
+                <div class="row" > 
+                  <div class="col-75">
+                    <div id="infor"></div>
+                  </div>
+                </div>
+
+
+              </div>   
+
+              <div id="div_tranfer"  class="row"  > 
+                <img id="showimg" src="" style="width: 400px;">  
+              </div>   
+
+              <div class="row">
+                <div id="message"> </div>
+                <button type="submit" id="btnSubmit" class="button_ok" onclick="onSaveData()"> ยืนยันข้อมูล</button>
+                </div>
+                <br>
+                <div class="row">
+                  <div id="pdfViewer">
+                    <embed id="embedPdf" >
+                  </div>         
+                </div>
+  
+              <!-- 
+              <div class="container" style="background-color:#f1f1f1">
+                <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              </div>
+               object-fit: contain;
+              -->
+         
+    </div>
+  
+  </div>
+
+</div>
+
+
+<script>
+
+$(document).on('click', '[data-dismiss="modal"]', function(){
+  
+  // if (window.confirm("Do you really want to leave?")) {
+  //    alert('yes')
+  // }else{
+  //   alert('no')
+  // }
+
+})
+    
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+  
+  function selectProduct() {
+    
+    var x = document.getElementById("select-product").value;
+    document.getElementById("demo").innerHTML = "สินค้าที่เลือก : " + x;
+    document.getElementById("input1").focus()
+  }
+
+
+    function closeClearForm(){
+
+      //alert('ok')
+      // Comfirm Box  
+      // let result = confirm("ยังไม่ได้ บันทึกข้อมูล ...");
+      // if (result === true) {
+      //   document.getElementById('id01').style.display='block'
+      //   //console.log("User clicked OK");
+      // } else {
+      //   document.getElementById('id01').style.display='none'
+      //   //console.log("User clicked Cancel");
+      // }
+      //alert('close --->')
+      
+      let checkSubmit = document.getElementById('btnSubmit')
+      //console.log(' gogo FFF ',checkSubmit.disabled)
+
+      if(!checkSubmit.disabled){
+        showBlinkMsg(true)
+      }
+      document.getElementById('btnInsert').focus();
+
+    }
+    
+    function loadFrmSaveData(){
+
+      
+        let unitpric = document.getElementById('sum_amt_all').innerText;
+        parseFloat(clearAmountSymbol(unitpric))
+        unitpric = parseFloat(clearAmountSymbol(unitpric))
+        console.log(' HHH ',unitpric)
+        if(unitpric>0){
+          document.getElementById('id01').style.display='block' ;
+        }
+
+        let sum_all =document.getElementById('sum_amt_all').innerText;
+        let getsumall = document.getElementById('sumtotal');
+        getsumall.innerText = sum_all;
+        //sumtotal.style.color ="blue"
+        let getMoney = document.getElementById('getMoney');
+        let getchageMoney = document.getElementById('change');
+        //getchageMoney.innerHTML = "";
+        //getMoney.value = ""
+
+        // if(fg_validate){
+        //   document.getElementById("btnSubmit").style.backgroundColor = '#04754c';
+        //   document.getElementById("btnSubmit").disabled = false;
+
+        // }else{
+        //   console.log(' SSS OK ',saveSucces)
+        //   if(saveSucces==1){
+        //     document.getElementById("btnSubmit").style.backgroundColor = '#04754c';
+        //   document.getElementById("btnSubmit").disabled = false;
+
+        //   }else{
+        //     document.getElementById("btnSubmit").disabled = true;
+        //   document.getElementById("btnSubmit").style.backgroundColor = '#a6acaf '; 
+
+        //   }
+
+        // }
+        
+          // if(fg_newTrans){
+          //   getMoney.value = '0.00'
+
+          // }
+
+          console.log(' SSS OK ',saveSucces  + "  " + fg_newTrans + " " + fg_validate ) 
+          if(saveSucces==1 ||fg_validate==false){
+            document.getElementById("btnSubmit").disabled = true;
+            document.getElementById("btnSubmit").style.backgroundColor = '#a6acaf '; 
+
+          }else{
+
+            document.getElementById("btnSubmit").style.backgroundColor = '#04754c';
+            document.getElementById("btnSubmit").disabled = false;
+
+
+          }
+
+        //let messageresDom = document.getElementById('message')
+        //messageresDom.innerText = ''
+        //messageresDom.className = 'message clear'
+
+        $("#showimg").attr('src', '');
+
+        document.getElementById('typecheck1').checked = true;  
+        document.getElementById("div_cash").style.display = 'inline';
+        document.getElementById("div_tranfer").style.display = 'none';
+        getMoney.focus();
+
+
+
+    }
+
+    function formatNumber(currElement){
+
+      let alert = document.getElementById('infor')
+      alert.innerText = "";
+      let number = currElement.value;
+      number = number.replace(/,/g, '')
+      //console.log(number)
+      if(!isNaN(parseFloat(number)) && !isNaN(number)) {
+        let formatter = new Intl.NumberFormat('en-US');
+        let cstr = number.toString();
+        let formattedNumber = formatter.format(cstr);
+        //console.log(formattedNumber); 
+        let idx = formattedNumber.search(/\./);
+        console.log('Serch' +idx); 
+      if(idx==-1){
+        currElement.value = formattedNumber + ".00"
+      }else{
+        currElement.value = formattedNumber + "0"
+      }
+      changeMoney();
+      }else{
+        document.getElementById("btnSubmit").disabled = true;
+        document.getElementById("btnSubmit").style.backgroundColor = '#a6acaf';
+        alert.style.color = "red";
+        alert.style.fontWeight = 'blod';
+        alert.innerText = "!กรุณา กรอกข้อมูลเป็นตัวเลข..";
+      }
+
+    }
+
+    function changeMoney(){
+      
+      let getsumall = document.getElementById('sumtotal');
+      let price = getsumall.innerText.trim();
+      let chageMoney = document.getElementById('change');
+      price = price.substring(1,price.length)
+      let contprice = parseFloat(price.replace(/,/g, ''));
+      let getMoney =  document.getElementById('getMoney').value;
+      let cntgetMoney = parseFloat(getMoney.replace(/,/g, ''));
+      if(cntgetMoney >= contprice){
+
+        document.getElementById("btnSubmit").style.backgroundColor = '#04754c';
+        document.getElementById("btnSubmit").disabled = false;
+        let moneychange = cntgetMoney - contprice
+        chageMoney.style.color = "red";
+        chageMoney.style.textAlign = 'right';
+        chageMoney.style.fontSize = '22px';
+        chageMoney.style.fontWeight = 'blod';
+        chageMoney.innerText =  setAmountFormatTh(moneychange);
+        fg_validate =true
+      }else{
+        fg_validate =false
+        document.getElementById("btnSubmit").disabled = true;
+        document.getElementById("btnSubmit").style.backgroundColor = '#a6acaf';
+        let alert = document.getElementById('infor')
+        alert.style.color = "red";
+        alert.style.fontWeight = 'blod';
+        alert.innerText =" !รับเงินจำนวนน้อยกว่ายอดชำระ"
+        chageMoney.innerText = ""
+
+      }
+
+    }
+
+    function doTheInsert() {
+
+      let e = document.getElementById('prod_Select');
+      let val = e.value;
+      //var text = e.options[e.selectedIndex].text;
+      const arrId = val.split("|")
+      console.log(' get ID xx  : ', arrId[0])
+      // get produt ID
+      let product_id = arrId[0]
+
+      let domunitprice = document.getElementById('unitPrice').innerText
+      domunitprice = parseInt(clearAmountSymbol(domunitprice))
+      console.log(' get unitprice   ZZZ : ',domunitprice)
+      if(domunitprice>0){
+        console.log(' get unitprice : ',domunitprice)
+        let getitem = document.getElementById('item').innerText;
+        getitem = getitem.trim();
+        getitem = getitem.substring(0,1);
+        let cmtitem = parseInt(getitem);
+        if (cmtitem=0){
+          document.getElementById('chkbill').disabled = true;
+        }else{
+
+          document.getElementById('chkbill').disabled = false;
+        }
+
+        let domtotal = document.getElementById('amount').innerText
+        //totalamt = domtotal
+        //console.log('Y  : '+totalamt)
+        let domqty = document.querySelector('input[name=qtybtn]')
+        let cntqty = parseInt(domqty.value)
+
+        let v_innerHtml="";
+        let newRow=document.getElementById('myTable').insertRow();
+        
+        v_innerHtml = `<td class='td_1'>  ${productName} </td>`;
+        v_innerHtml += `<td class='td_2'> <input type='number' id ='qty' name='qty' class='decimal' min='1' max='999' value=${cntqty} onchange='changeQtyTable(this)'> </td>`;
+        v_innerHtml += `<td class='td_3'>  ${domtotal}</td>`;
+        v_innerHtml += `<td class='td_4' style='display:none;'> ${domunitprice} </td>`;
+        v_innerHtml += `<td class='td_4' style='display:none;'> ${product_id} </td>`;
+        v_innerHtml += `<td class='td_4' > </td>`;
+        v_innerHtml += `<td>  <button id='b_edit' class='button-edit' onclick='editRow(this)'> แก้ไข </button> </td>`;
+        v_innerHtml += `<td>  <button id='b_delete' class='button-delete' onclick='delRow(this)'> ลบ </button> </td>`;
+
+        newRow.innerHTML=v_innerHtml
+        //executeCalc(); 
+        calcAmount()
+
+      }
+      // else{
+      //   //alert('ok') 
+      //   let selOpt =document.getElementById('prod_Select')
+      //   selOpt.onfocus();
+
+      // }
+
+
+    }
+
+    function delRow(currElement) {
+
+      let getitem = document.getElementById('item').innerText;
+      getitem = getitem.trim();
+      getitem = getitem.substring(0,1);
+      let cmtitem = parseInt(getitem);
+      let parentRowIndex = currElement.parentNode.parentNode.rowIndex;
+      let rowid =parentRowIndex;
+        if (rowid==1 && cmtitem ==1){
+          document.getElementById('chkbill').disabled = true;
+        }else{
+          document.getElementById('chkbill').disabled = false;
+        }
+      // if(window.confirm("ต้องการลบข้อมูล...?" + parentRowIndex)) {
+      //  document.getElementById("myTable").deleteRow(parentRowIndex);
+      // }
+      document.getElementById("myTable").deleteRow(parentRowIndex);
+        calcAmount()
+      }
+      function changeQty(currElement){
+        calcAmount()
+      }
+
+      function editRow(currElement) {
+        calcAmount()
+      }
+
+      function changeQtyTable(currElement){
+        calcAmount()
+      }
+  
+
+    function changeDiscount(currElement){
+
+      let sumamtall = document.getElementById('sum_amt_all')
+      let sumamt = document.getElementById('sum_amt_obj')
+      let bDiscnt = document.getElementById('b_discnt')
+      let disCount = document.getElementById('discount')
+      let getDist =bDiscnt.value;
+      let price = sumamt.innerText.trim();
+      //console.log(' price xxx ',price)
+
+      let contprice = parseFloat(clearAmountSymbol(price));
+      let amt_discnt = contprice*getDist/100;
+      disCount.innerText =  setAmountFormatTh(amt_discnt);
+      sumAll = contprice-amt_discnt;
+      // ปัดเศษทศนิยม
+      sumAll = Math.ceil(sumAll);
+      disCount.innerText =  setAmountFormatTh(amt_discnt);
+      sumAll = setAmountFormatTh(sumAll);
+      sumamtall.innerText = sumAll;
+
+    }
+
+
+
+  // random 4 digit
+  //let val = Math.floor(1000 + Math.random() * 9000);
+  //console.log(val);
+
+    //pad string
+  //const zeroPad = (num, places) => String(num).padStart(places, '0')
+  //console.log(zeroPad(5, 2)); // "05"
+  //console.log(zeroPad(5, 4)); // "0005"
+  //console.log(zeroPad(5, 6)); // "000005"
+  //console.log(zeroPad(1234, 2)); // "1234"
+
+
+
+
+</Script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- เพิ่ม script axios -->   
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="/front-end/js/system.js"></script>
+<script src="/front-end/js/sell.js"></script> 
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:  rgb(235, 232, 232);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color:#c4c1c1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(136, 101, 56, 0.1);
+            width: 350px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type=text], input[type=password] {
+          width: 100%;
+          height: 50PX;
+          font-size: large;
+          font-weight: bold;
+          padding: 12px 20px;
+          border-radius: 7px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .password-hint {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /*  
+        .password-strength {
+            margin-top: 5px;
+        }
+
+        .password-strength div {
+            height: 5px;
+            border-radius: 4px;
+        }
+
+        .weak {
+            width: 33%;
+            background-color: red;
+        }
+
+        .medium {
+            width: 66%;
+            background-color: orange;
+        }
+
+        .strong {
+            width: 100%;
+            background-color: green;
+        }
+        */
+
+        img.avatar {
+          border-radius: 50%;
+          border-color: green;
+        }
+
+        .logInbtn {
+        background-color: #2a803f;  
+        color: white;
+        font-size: 22px;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border-radius: 10px;
+        border-width: 2px;
+        border-color: rgb(238, 203, 48);
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+    
+    .logInbtn:hover {
+      opacity: 1;
+      background-color: #04754c;
+    }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="text-align: center;"><img src="images/Lotus1.png" alt="Avatar" class="avatar"   width="100" height="100"></div>
+        <div style="font-size: 25px ;font-weight: bold; text-align: center;"> <span style="color:green;"> </span> <span style="color: red;"> Fast</span>   <span style="color: #25a021;"> - </span> <span style="color: #008cff;">PoS</span></div>
+            <br>
+            <div class="form-group">
+                <label for="username"  style="color: #474646;"> <b>User Name / ชื่อ</b></label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <!--
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            -->
+            <div class="form-group">
+                <label for="password" style="color: #474646;"><b>Password / รหัส</b> </label>
+                <input type="password" id="password" name="password" required>
+                <!--
+                <div class="password-hint" id="passwordHint">
+                    Password must be at least 8 characters long, and include at
+                    least one uppercase letter, one lowercase letter, one
+                    number, and one special character.
+                </div>
+                <span id="passwordError" class="error"></span>
+                <div class="password-strength" id="passwordStrength"></div>
+               -->
+            </div>
+            <br>
+            <div class="form-group">
+            <!--    
+                <input type="password" id="confirmPassword"
+                    name="confirmPassword" required>
+                <span id="confirmPasswordError" class="error"></span>
+            -->
+            </div>
+            <button type="submit" class="logInbtn" >LogIn</button>
+        <p id="message"></p>
+          
+          <div style="text-align: center;">
+             <img src="/front-end/images/Lotus1.png " class="avatar"   style="width: 20px; height: 15px;"> &copy; Bua Technologies co.,Ltd.
+          </div>
+  
+    
+    </div>
+    <!-- <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('confirmPassword').value;
+            let message = document.getElementById('message');
+            let passwordError = document.getElementById('passwordError');
+            let confirmPasswordError = document.getElementById('confirmPasswordError');
+
+            let passwordValid = validatePassword(password);
+            if (!passwordValid) {
+                passwordError.textContent = 'Password does not meet the requirements.';
+                return;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = 'Passwords do not match!';
+                return;
+            } else {
+                confirmPasswordError.textContent = '';
+            }
+
+            // Here you can add code to send the form data to the server
+
+            message.style.color = 'green';
+            message.textContent = 'Signup successful!';
+        });
+
+        document.getElementById('password').addEventListener('focus', function () {
+            document.getElementById('passwordHint').style.display = 'block';
+        });
+
+        document.getElementById('password').addEventListener('blur', function () {
+            document.getElementById('passwordHint').style.display = 'none';
+        });
+
+        document.getElementById('password').addEventListener('input', function () {
+            let password = this.value;
+            let passwordStrength = document.getElementById('passwordStrength');
+            let strength = getPasswordStrength(password);
+
+            passwordStrength.innerHTML = ''; // Clear previous strength bars
+            if (strength) {
+                let strengthBar = document.createElement('div');
+                strengthBar.className = strength;
+                passwordStrength.appendChild(strengthBar);
+            }
+        });
+
+        function validatePassword(password) {
+            let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return regex.test(password);
+        }
+
+        function getPasswordStrength(password) {
+            if (password.length < 8) {
+                return 'weak';
+            }
+            if (password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/)) {
+                return 'strong';
+            }
+            return 'medium';
+        }
+    </script> -->
+
+
+
+</body>
+
+</html>
+
+<!--
+ test git
+-->

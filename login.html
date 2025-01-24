@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn | Fast-PoS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:  rgb(235, 232, 232);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color:#c4c1c1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(136, 101, 56, 0.1);
+            width: 350px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type=text], input[type=password] {
+          width: 100%;
+          height: 45PX;
+          font-size: large;
+          font-weight: bold;
+          padding: 12px 20px;
+          border-radius: 7px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn_contact{
+            width: 70px;
+            height: 30px;
+            padding: 5px;
+            background-color: #5e5cb8;
+
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+
+        img.avatar {
+          border-radius: 50%;
+          border-color: green;
+        }
+
+      .logInbtn {
+        background-color: #2a803f;  
+        color: white;
+        font-size: 22px;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border-radius: 10px;
+        border-width: 2px;
+        border-color: rgb(238, 203, 48);
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+    
+    .logInbtn:hover {
+      opacity: 1;
+      background-color: #04754c;
+    }
+    .message{
+            background-color:lightslategray;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .message.success{
+            background-color: rgb(101, 165, 101);
+            display: block;
+        }
+        .message.danger{
+            background-color:  rgb(245, 240, 240);
+            color: rgba(255, 0, 0, 0.911);
+            border-style: groove;
+            display: block;
+            font-weight: bold;
+            border-radius: 10px;
+            border-width: 2px;
+            border-color: rgb(238, 61, 48);
+        }
+        .message.clear{
+            display: none;
+        }
+
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:visited {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="text-align: center;"><img src="images/Lotus1.png" alt="Avatar" class="avatar"   width="60" height="50"></div>
+        <div style="font-size: 25px ;font-weight: bold; text-align: center;"> <span style="color:green;"> </span> <span style="color: red;"> Fast</span>   <span style="color: #25a021;"> - </span> <span style="color: #008cff;">PoS</span></div>
+            <br>
+            <div class="form-group">
+                <label for="username"  style="color: #474646;"> <b>User Name / ชื่อ</b></label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: #474646;"><b>Password / รหัส</b> </label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+              <div id="infor"> </div>
+
+            </div>
+
+            <button type="submit" class="logInbtn" onclick="onLogin()">LogIn</button>
+          
+          <div style="text-align:left;">
+            <p> ลงทะเบียน --->  <a href="/front-end/register.html">ลงทะเบียน </a></p> 
+          </div>
+           
+          <div style="text-align:center;">
+            <img src="/front-end/images/Lotus1.png " class="avatar"   style="width: 20px; height: 15px;"> &copy; Bua-soft Technologies co.,Ltd.
+          </div>
+          <div style="text-align:center ;padding: 10px;">
+            <button class="btn_contact"> ติตต่อเรา </button>
+          </div>  
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- เพิ่ม script axios -->   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/front-end/js/login.js"></script>
+
+</body>
+
+</html>
+
+<!--
+   test  OK 
+-->

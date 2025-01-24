@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q POS|นำเข้าข้อมูล</title>
+    <link rel="stylesheet" href="/front-end/css/menu.css">
+    
+    
+    <script src="/front-end/js/jsalert.min.js"></script>
+</head>
+<Style>
+    .child {
+        height: auto;
+        margin: 10px;
+        border: 0px solid;
+        background-color: #f8f8f2; 
+   
+    }
+    .showDate{
+    font-size: 13px;
+    color: #5abdce;
+    font-weight: bold;
+    text-align: left;
+    padding: 17px;
+  
+  }
+
+  .button_upload {
+
+    background-color: #04754c;
+    color: #f8f543;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer; 
+  }
+
+.button_download {
+
+background-color: #464443;
+color: #4d9af3;
+font-weight: bold;
+height: 40px;
+border-radius: 8px;
+cursor: pointer; 
+}
+
+
+
+
+</Style>
+
+<body>
+    <div class="child">
+
+      <div class="topnav" id="myTopnav">
+        <a href="#home" class="active"> <img src="/front-end/images/Lotus1.png" alt="ิกลับไปหน้า หลัก"  style="width:45x;height:35px; border-radius: 5px;" > </a>
+        <a href="/front-end/sell.html">ขาย</a>
+        <a href="/front-end/product.html">สินค้า</a>
+        <a href="/front-end/report.html">รายงาน</a>
+        <a href="#User">ข้อมูลผู้ใช้</a>
+        <a href="/front-end/upload.html">นำเข้าข้อมูล</a>
+        <a href="#Exit" alt="ิกลับไปหน้า Login" > <img src="/front-end/images/exit_2.jpg" alt="ิกลับไปหน้า Login" style="width:40px;height:30px; border-radius: 2px;" ></a>
+        <div id="id_date" class="showDate" > 12/12/2054 | Id: 5682   </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+      <br>
+        
+        <div style="padding: 30px;">
+          
+          <button class="button_download" onclick="downloadFile()">Download File ตัวอย่าง  </button>
+          <br>
+          <br>
+          <input type="file" id="fileInput" accept=".xlsx,.xls,.txt" alt="เลือก File" />
+          <button class="button_upload"  onclick="uploadFile()">นำเข้า File </button>
+
+          <br>
+              
+              <div>
+                <progress id="uploadProgress" value="0" max="100" style="width: 100%"></progress>
+                <span id="uploadPercentage">0%</span>
+              </div>           
+           
+        </div> 
+    
+    </div> <!-- div Child-->   
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- เพิ่ม script axios -->   
+    <script src="/front-end/js/system.js"></script>
+    <script src="/front-end/js/upload.js"></script>
+    <script src="/front-end/js/jsalert.min.js"></script>
+
+</body>
+</html>
