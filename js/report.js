@@ -112,7 +112,7 @@ const generateReport = async(arrParam)=>{
                 v_innerHtml += `<td class='tdReport_date' >วันที่</td>`;
                 break;
             case 1:
-                v_innerHtml += `<td class='tdReport_amount' >จำนวน</td>`;
+                v_innerHtml += `<td class='tdReport_amount' >จำนวนขาย</td>`;
                 break;
               case 2:
                 v_innerHtml += `<td class='tdReport_sell' >ขาย</td>`;
@@ -242,7 +242,7 @@ const generateProductChart = (arrIn)=>{
     let domTable = document.getElementById('tblProductReport')
     let colorMax=[]
 
-        for(let row=0;row<2;row++){
+        for(let row=0;row<3;row++){
         v_innerHtml += ` <tr>`;
         switch(row) {
             case 0:
@@ -251,7 +251,12 @@ const generateProductChart = (arrIn)=>{
             case 1:
                 v_innerHtml += `<td class='tdReport_selAmount' >จำนวน</td>`;
                 break;
+            case 2:
+                v_innerHtml += `<td class='tdReport_sell' >ขาย</td>`;
+                break;
+        
         }
+        let sumTotalPrdt = 0
         for(let i=0;i<arrIn[0].length;i++){
             //console.log( ' COl : xx  ',arrParam[0][i].cntOrder)
             switch(row) {
@@ -265,9 +270,25 @@ const generateProductChart = (arrIn)=>{
                     colorMax.push(arrIn[0][i].cnt)
                     //arrtotal.push(arrParam[0][i].cntOrder)
                     break;
-              }
+                case 2:
+                    //cntSell += parseInt(arrIn[0][i].cntOrder)
+                    //v_innerHtml += `<td class='tdReport_sell' >${arrIn[0][i].sum_prodt} </td>`;
+                    v_innerHtml += `<td class='tdReport_sell'>${setAmountFormatTh(arrIn[0][i].sum_prodt)} </td>`;
+                    colorMax.push(arrIn[0][i].sum_prodt)
+                    //console.log(' sum produt ; ',parseFloat(arrIn[0][i].sum_prodt))
+                    sumTotalPrdt += parseFloat(arrIn[0][i].sum_prodt)
+                    break;
+    
+                }
+
+
         }
         v_innerHtml += `  </tr>`;
+        
+        
+        document.getElementById('sumtotal').innerText =  setAmountFormatTh(sumTotalPrdt) 
+
+
     }
 
     domTable.innerHTML=v_innerHtml
@@ -286,9 +307,9 @@ const generateProductChart = (arrIn)=>{
         arrPrdt.push(arrIn[0][j].prodt_name)
         totalProduct += parseInt(arrIn[0][j].cnt)
         arrPrdtCnt.push(arrIn[0][j].cnt)
-        if(max==arrIn[0][j].cnt){
-            arrColor.push("#1e7145")
-        }else{
+        // if(max==arrIn[0][j].cnt){
+        //     arrColor.push("#1e7145")
+        // }else{
             switch (icntColor){
                 case 1:
                     arrColor.push("#b91d47")
@@ -306,12 +327,16 @@ const generateProductChart = (arrIn)=>{
                 case 5:
                     arrColor.push("#e8c3b9")
                     break;
+                case 6:
+                    arrColor.push("#1e7145")
+                    break;
+        
             }
-            if(icntColor==5){
+            if(icntColor==6){
                 icntColor = 0
             }
             icntColor++;
-        }
+        //}
 
     }
     document.getElementById('sumCntProduct').innerText = setAmoutFormat(totalProduct)
