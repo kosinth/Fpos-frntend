@@ -3,11 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/menu.css">
     <title>หน้าหลัก</title>
+ <style>
+
+body {
+            font-family: 'kanit';
+            background-color:  rgb(235, 232, 232);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+.child {
+        height: auto;
+        margin: 10px;
+        border: 0px solid;
+        background-color: #f8f8f2; 
+   
+    }
+    .showDate{
+    font-size: 13px;
+    color: #5abdce;
+    font-weight: bold;
+    text-align: left;
+    padding: 17px;
+    
+  
+  } 
+  .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: rgb(235, 232, 232);
+   color: rgb(77, 75, 75);
+   text-align: center;
+   margin: 10px;
+   border-radius: 10px;
+}
+
+</style>    
+        
+
 </head>
 <body>
 
-    <H1> Hello World ! </H1>
-    
+    <div class="child">
+
+        <div class="topnav" id="myTopnav">
+          
+
+          <a href="/main.html" class="active"> <img src="/images/Lotus1.png" alt="ิกลับไปหน้า หลัก"  style="width:45x;height:35px; border-radius: 5px;" > </a>
+          <a href="/sell.html">ขาย</a>
+          <a href="/product.html">สินค้า</a>
+          <a href="/report.html">รายงาน</a>
+          <a href="#User">ข้อมูลผู้ใช้</a>
+          <a href="/upload.html">นำเข้าข้อมูล</a>
+          <a href="#Exit" alt="ิกลับไปหน้า Login" > <img src="/images/exit_2.jpg" alt="ิกลับไปหน้า Login" style="width:40px;height:30px; border-radius: 2px;" ></a>
+          <div id="id_date" class="showDate" > 12/12/2054 | Id: 5682   </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+      </div>
+  
+      <!--
+      <div class="child">
+        <div class="topnav" id="myTopnav">
+          <a href="#home" class="active"> <img src="/images/Lotus1.png" alt="ิกลับไปหน้า หลัก"  style="width:45x;height:35px; border-radius: 5px;" > </a>
+          <a href="/sell.html">ขาย</a>
+          <a href="/product.html">สินค้า</a>
+          <a href="/report.html">รายงาน</a>
+          <a href="#User">ข้อมูลผู้ใช้</a>
+          <a href="/upload.html">นำเข้าข้อมูล</a>
+          <a href="#Exit" alt="ิกลับไปหน้า Login" > <img src="/images/exit_2.jpg" alt="ิกลับไปหน้า Login" style="width:40px;height:30px; border-radius: 2px;" ></a>
+          <div id="id_date" class="showDate" > 12/12/2054 | Id: 5682   </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+    -->
+
+
+
+    <div class="footer">
+        <div style="text-align:center;">
+        <img src="/images/Lotus1.png " class="avatar"   style="width: 20px; height: 15px;"> &copy; Bua-soft Technologies co.,Ltd.
+         </div>
+
+    </div>
+   
+</div>
+    <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>  
+
+
 </body>
 </html>
