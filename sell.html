@@ -29,7 +29,10 @@
     }       
     body{
         font-family: 'kanit';
-    }
+        background-color:  #f8f8f2; 
+
+      }
+
 
  
 table {
@@ -283,6 +286,7 @@ table {
             -webkit-user-select: none;
             touch-action: manipulation;
             white-space: nowrap;
+            cursor: pointer; 
 
         }
         .button_Chekbill:hover {
@@ -432,7 +436,6 @@ span.psw {
 
 */
 
-
 .showDate{
   font-size: 13px;
   color: #5abdce;
@@ -499,7 +502,7 @@ span.psw {
  .span_infoprod{
   float: center;
   margin: 10px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
   color: #333333;
 
@@ -508,7 +511,7 @@ span.psw {
  .span_inv_detail{
   float: center;
   margin: 10px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: bold;
   color: #04754c;
  }
@@ -628,18 +631,21 @@ img {
   }      
 
   .new_order{
-    background-color: #dfc532;
-    font-weight: bold;
-    height: 30px;
-    border-radius: 8px;
-   }
+    background-color: #04754c;
+          color: #e0d0d0;
+          font-weight: bold;
+          height: 33px;
+          border-radius: 8px;
+          border-color: orange;
+          cursor: pointer; 
+
+  }
    .new_item{
     background-color: #04754c;
     color: #e0d0d0;
     font-weight: bold;
     height: 30px;
     border-radius: 8px;
-    
 
    }
 
@@ -672,18 +678,20 @@ img {
 
     <br>
       <div class="div_select_product"> 
-          
-          <div class="row" > 
+        <div class="row" > 
             <div class="col-50">
+      
+              <div style="padding-top: 10px;"> </div>
               <!-- class กำหนดความสูง  .bootstrap-select > .dropdown-toggle  mySelect prod_Select  
               &nbsp;&nbsp; 
               -->
               <span>
-                <select id="prod_Select" class="selectpicker" data-live-search="true">
+                <select id="prod_Select" class="selectpicker"  data-live-search="true">
                   <option>-- ค้นหาสินค้า -- </option>
                 </select>    
                 <span> &nbsp;&nbsp; <input type="button"  class="new_order"    value="ขาย +"  onclick="clearDataTonewInv()" title="ล้างหน้าจอ เริ่มคำสั่งซื้อใหม่"> </span>
-             </span>
+
+              </span>
             </div>
           </div>
           
@@ -692,16 +700,19 @@ img {
       <br>    
   
   <div class="div_select_product_detail">
-     
+    <!--     
     <span><input type="button" id="btnInsert" class="new_item" onclick="doTheInsert()"  value=" เพิ่มรายการ +" title="เพิ่มสินค้า"> </span>
+  -->
+  <span id="labelunit" class="span_infoprod"> ราคา/หน่วย </span>  
+  <span id="unitPrice" class="span_inv_detail"> 0 </span>  
 
-    <span id="labelunit" class="span_infoprod"> ราคา/หน่วย </span>  
-    <span id="unitPrice" class="span_inv_detail"> 0 </span>  
+
+    <!--
     <span id="qty" class="span_infoprod"> จำนวน <input id="qtybtn" name="qtybtn" type="number" class="btn_qty" min="1" value="1" onchange="changeQty()"></span>  
     <span id="amount" class="span_inv_detail"></span>  
-
+  -->
   </div>
-    <br> 
+    <div style="padding-top: 10px;"></div>
     <div>
       <table id="myTable"  style="border:0"  >
         <thead>
@@ -901,7 +912,7 @@ function myFunction() {
       if(!checkSubmit.disabled){
         showBlinkMsg(true)
       }
-      document.getElementById('btnInsert').focus();
+      //document.getElementById('btnInsert').focus();
 
     }
     
@@ -1051,10 +1062,10 @@ function myFunction() {
       let product_id = arrId[0]
 
       let domunitprice = document.getElementById('unitPrice').innerText
-      domunitprice = parseInt(clearAmountSymbol(domunitprice))
-      console.log(' get unitprice   ZZZ : ',domunitprice)
-      if(domunitprice>0){
-        console.log(' get unitprice : ',domunitprice)
+      let unitprice = parseInt(clearAmountSymbol(domunitprice))
+      console.log(' get unitprice   ZZZ : ',unitprice)
+      if(unitprice>0){
+        console.log(' get unitprice : ',unitprice)
         let getitem = document.getElementById('item').innerText;
         getitem = getitem.trim();
         getitem = getitem.substring(0,1);
@@ -1066,19 +1077,23 @@ function myFunction() {
           document.getElementById('chkbill').disabled = false;
         }
 
-        let domtotal = document.getElementById('amount').innerText
+        //let domtotal = document.getElementById('amount').innerText
         //totalamt = domtotal
         //console.log('Y  : '+totalamt)
-        let domqty = document.querySelector('input[name=qtybtn]')
-        let cntqty = parseInt(domqty.value)
+        
+        //let domqty = document.querySelector('input[name=qtybtn]')
+        let cntqty = 1
 
         let v_innerHtml="";
         let newRow=document.getElementById('myTable').insertRow();
         
-        v_innerHtml = `<td class='td_1'>  ${productName} </td>`;
+        v_innerHtml = `<td class='td_1' style='font-weight: bold;' >  ${productName} </td>`;
         v_innerHtml += `<td class='td_2'> <input type='number' id ='qty' name='qty' class='decimal' min='1' max='999' value=${cntqty} onchange='changeQtyTable(this)'> </td>`;
-        v_innerHtml += `<td class='td_3'>  ${domtotal}</td>`;
-        v_innerHtml += `<td class='td_4' style='display:none;'> ${domunitprice} </td>`;
+        /*
+        v_innerHtml += `<td class='td_2'> <input type='number' id ='qty' name='qty' class='decimal' min='1' max='999' value=${cntqty} onchange='changeQtyTable(this)'> </td>`;
+        */
+        v_innerHtml += `<td class='td_3' style='font-weight: bold;'>  ${domunitprice}</td>`;
+        v_innerHtml += `<td class='td_4' style='display:none;'> ${unitprice} </td>`;
         v_innerHtml += `<td class='td_4' style='display:none;'> ${product_id} </td>`;
         v_innerHtml += `<td class='td_4' > </td>`;
         v_innerHtml += `<td>  <button id='b_edit' class='button-edit' onclick='editRow(this)'> แก้ไข </button> </td>`;

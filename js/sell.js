@@ -1,7 +1,7 @@
     let productName = '';
     let sel = document.getElementById('prod_Select');
     let domunitprice = document.getElementById('unitPrice')
-    let domtotal = document.getElementById('amount')
+    //let domtotal = document.getElementById('amount')
     let selectedRadio = 'cash'
     let payment =0
     let getrowInv = [];
@@ -27,14 +27,21 @@
             domunitprice.innerText = setAmountFormatTh(unitprice)
 
             //let getqty = document.getElementById('qty').value
-            let domqty = document.querySelector('input[name=qtybtn]')
-            domqty.value = '1'
-            let cntqty = parseInt(domqty.value)
-            unitprice =  parseFloat(unitprice)
-            let total =  unitprice * cntqty
-            domtotal.innerText = setAmountFormatTh(total)
+            //let domqty = document.querySelector('input[name=qtybtn]')
+            //domqty.value = '1'
+            // let cntqty = parseInt(domqty.value)
+            // unitprice =  parseFloat(unitprice)
+            // let total =  unitprice * cntqty
+            // domtotal.innerText = setAmountFormatTh(total)
+            //changeQty();
+
+
        }
-       document.getElementById('btnInsert').focus()
+
+       doTheInsert();
+
+       //document.getElementById('btnInsert').focus()
+
 
     };
 
@@ -90,23 +97,24 @@ window.onload = function() {
 
 };
 
-changeQty = ()=>{
 
-    let unitprice = document.getElementById('unitPrice');
-    let domqty = document.querySelector('input[name=qtybtn]')
-    let amount = document.getElementById('amount');
+//  changeQty = ()=>{
 
-    let cnvqty = parseInt(domqty.value)
-    //console.log(' 555 '+unitprice.innerText)  //clearAmountSymbol
-    let cnvunitPrice =  parseFloat(clearAmountSymbol(unitprice.innerText))
-    //let cnvunitPrice =  parseFloat(unitprice.innerText.replace(/[฿,]/g,""))
-    //console.log(' 555 '+cnvunitPrice)  //clearAmountSymbol
-    //let costPrice = cnvunitPrice.replace(/[฿,]/g,"")
-    let result = cnvunitPrice* cnvqty
-    //console.log(' 555 '+result)
-    amount.innerText = setAmountFormatTh(result)
+//     let unitprice = document.getElementById('unitPrice');
+//     let domqty = document.querySelector('input[name=qtybtn]')
+//     let amount = document.getElementById('amount');
 
-}
+//     //let cnvqty = parseInt(domqty.value)
+//     //console.log(' 555 '+unitprice.innerText)  //clearAmountSymbol
+//     let cnvunitPrice =  parseFloat(clearAmountSymbol(unitprice.innerText))
+//     //let cnvunitPrice =  parseFloat(unitprice.innerText.replace(/[฿,]/g,""))
+//     //console.log(' 555 '+cnvunitPrice)  //clearAmountSymbol
+//     //let costPrice = cnvunitPrice.replace(/[฿,]/g,"")
+//     let result = cnvunitPrice* cnvqty
+//     //console.log(' 555 '+result)
+//     amount.innerText = setAmountFormatTh(result)
+
+// }
 
 const calcAmount = ()=>{
 
@@ -417,9 +425,9 @@ const getDataSell = () => {
     saveSucces =0;
     fg_newTrans = true
 
-    document.querySelector('input[name=qtybtn]').value = 1
+    //document.querySelector('input[name=qtybtn]').value = 1
     document.getElementById('unitPrice').innerText = 0;
-    document.getElementById('amount').innerText = 0;
+    //document.getElementById('amount').innerText = 0;
 
     document.getElementById('item').innerText = '0 รายการ';
     document.getElementById('sum_amt_obj').innerText = '0';
