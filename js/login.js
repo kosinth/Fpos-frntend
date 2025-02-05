@@ -92,7 +92,7 @@ const callLogIn = async(logInData)=>{
                 localStorage.setItem('shopId',resp.data.shopId)
                 localStorage.setItem('shopName',resp.data.shopName)
                 localStorage.setItem('user_name',resp.data.user_name)
-                location.replace('http://localhost:3000/main.html')
+                //location.replace('http://localhost:3000/main.html')
                 Swal.fire({
                     title: `${resp.data.token}`,
                     icon: "success"

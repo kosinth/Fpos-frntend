@@ -17,6 +17,7 @@ const onclicksubmit = async() =>{
         let pswDom = document.getElementById('psw')
         //let pswRepeatDom = document.getElementById('psw-repeat')
         let emailDom = document.getElementById('email')
+        let mobileDom = document.getElementById('mobile')
         let promtpayDom = document.getElementById('promtpay')
         //message errors
 
@@ -27,6 +28,7 @@ const onclicksubmit = async() =>{
             user_name: usrDom.value,
             user_password: pswDom.value,
             user_email: emailDom.value,
+            user_mobile: mobileDom.value,
             user_promptpay: promtpayDom.value
         }
         
@@ -91,6 +93,10 @@ const validateData =(registData) =>{
         errors.push('กรุณากรอก e-mail')
     }
 
+    if (!registData.user_mobile){
+        errors.push('กรุณากรอก เบอร์มือถือ')
+    }
+
     if (!registData.user_promptpay){
         console.log(' promt Pay : ',registData.regist_promtpay)
         errors.push('กรุณากรอก เลขบัญชี promt-pay')
@@ -141,6 +147,8 @@ function formatNumber(currElement){
     let pswDom = document.getElementById('psw')
     //let pswRepeatDom = document.getElementById('psw-repeat')
     let emailDom = document.getElementById('email')
+    let mobileDom = document.getElementById('mobile')
+
     let promtpayDom = document.getElementById('promtpay')
 
 
@@ -149,6 +157,7 @@ function formatNumber(currElement){
      document.getElementById('s_usrName').innerText = usrDom.value
      document.getElementById('s_pass').innerText = pswDom.value
      document.getElementById('s_Email').innerText = emailDom.value
+     document.getElementById('s_mobile').innerText = mobileDom.value
      document.getElementById('s_promtpay').innerText = promtpayDom.value
 
 
