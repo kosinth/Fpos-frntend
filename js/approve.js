@@ -88,12 +88,14 @@ const loadData = async(curr) =>{
                 htmlData += `<td style="text-align:center;font-weight: bold;font-size: 16px;"">  ${dateexpire}  </td>`
                 htmlData += `<td style="width:15%;">  </td>`
                 //htmlData += `<td> <a href='register.html?id=${product.Id}'> <button >Edit </button> </a> </td>`
-                htmlData += `<td> <button id='button-edit' class='edit' data-id='${'EDIT'}^${user.shop_id }^${user.shop_name }'>อนุมัติ</button> </td>`
+                htmlData += `<td> <button id='button-edit' class='edit' data-id='${'EDIT'}^${user.shop_id }^${user.shop_name }'>อนุมัติ - 1</button> </td>`
                 htmlData += `<td> <button id='button-delete' class='delete' data-id='${user.shop_id }^${user.shop_name}'> ลบ</button> </td>`
+                htmlData += `<td> <button id='button-edit' class='add' data-id='${user.shop_id }^${user.shop_name}'> เตรียมข้อมูล - 2</button> </td>`
                 htmlData += ' </tr>'
         }
         htmlData += '</table>'
         htmlData += '</div>'
+
         userDom.innerHTML = htmlData
         const deleteDom = document.getElementsByClassName('delete')
 
@@ -224,6 +226,60 @@ const loadData = async(curr) =>{
             
             })
         }
+
+        // add data to table tbUser
+        const addDom = document.getElementsByClassName('add')
+        let addId =''
+        for(let j=0;j<editDom.length;j++){
+            addDom[j].addEventListener('click',async (event)=>{
+                addId =  event.target.dataset.id
+                const arraddId = addId.split("^")
+                //mode = arraddId[0] 
+                selectedId = arraddId[0]
+                //console.log(mode + "  " + selectedId )
+                try{
+                    Swal.fire({
+                        title: 'เพิ่มข้อมูล --> tbUser',
+                        text: `ต้องการเพิ่มข้อมูล... ${selectedId} - ${arraddId[1]} ` ,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#43a047 ', 
+                        cancelButtonColor: '#e74c3c ',
+                        confirmButtonText: ' เพิ่มข้อมูล ',
+                        cancelButtonText: 'ยกเลิก',  
+                    }).then(async(result) => {
+                        if (result.isConfirmed) {
+                            try{
+                            
+                                const respDatga = await axios.post(`http://localhost:5000/api/approve-addData/${selectedId}`)
+                                console.log('add data success... ' + respDatga.data.statusUpdate)
+                                Swal.fire({
+                                    title: "เพิ่มข้อมูลสำเร็จ...",
+                                    icon: "success",
+                                    draggable: true
+                                  });
+            
+                                  loadData('');
+
+                            }catch(err){
+                                console.log('Error: ',err.message)            
+                            }
+                            loadData('')
+                            return true;
+                        }
+                        else{
+                            return false;
+                        }
+                    })
+
+                }catch(err){
+                    console.log('Error: ',err.message)            
+                }
+            
+            })
+        }
+
+
 
 
     }catch(err){

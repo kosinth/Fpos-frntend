@@ -190,7 +190,7 @@ function formatNumber(currElement){
             //
             console.log(resp.data.user_id + resp.data.password+ resp.data.shop_id);
             Swal.fire({
-                title: `ลงทะเบียนสำเร็จ  \n รหัสร้านค้า ID : ${resp.data.shop_id } \n ชื่อเข้าระบบ  :  ${resp.data.user_id } \n  รหัส  :  ${resp.data.password }`,
+                title: `ลงทะเบียนสำเร็จ  \n รหัสร้านค้า ID : ${resp.data.shop_id } \n ชื่อเข้าระบบ  :  ${resp.data.user_id } \n  รหัสผ่าน  :  ${resp.data.password }`,
                 text: 'ระบบจะทำการส่งข้อมูลไปยัง E-mail กรุณาตรวจสอบข้อมูล',
                 icon: 'success'
             }); 
