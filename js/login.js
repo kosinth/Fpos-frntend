@@ -6,6 +6,7 @@ onLogin = ()=>{
 
     try{
 
+        let shopIdDom = document.querySelector('input[name=shopId]')
         let userNameDom = document.querySelector('input[name=username]')
         let PassDom = document.querySelector('input[name=password]')
         //message errors
@@ -13,6 +14,7 @@ onLogin = ()=>{
         let loginData = {
             user_name: userNameDom.value,
             user_pass: PassDom.value,
+            shop_id :  shopIdDom.value,
         }
         
         console.log('send RegistData : ',loginData)
@@ -52,6 +54,9 @@ onLogin = ()=>{
 const validateData =(logIndata) =>{
 
     let errors=[]
+    if(!logIndata.shop_id){
+        errors.push('กรุณากรอก รหัสร้านค้า')
+    }
     if (!logIndata.user_name){
         errors.push('กรุณากรอก User Name / ชื่อ')
     }
@@ -59,6 +64,8 @@ const validateData =(logIndata) =>{
     if(!logIndata.user_pass){
         errors.push('กรุณากรอก Password / รหัส')
     }
+
+    
     return errors
 
 }
